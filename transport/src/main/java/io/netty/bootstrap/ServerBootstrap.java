@@ -172,7 +172,7 @@ public class ServerBootstrap extends AbstractBootstrap<ServerBootstrap, ServerCh
         return this;
     }
 
-    private static class ServerBootstrapAcceptor extends ChannelInboundHandlerAdapter {
+    private static class ServerBootstrapAcceptor extends ChannelInboundHandlerAdapter { // 参数为用户传入的
 
         private final EventLoopGroup childGroup;
         private final ChannelHandler childHandler;
@@ -204,7 +204,7 @@ public class ServerBootstrap extends AbstractBootstrap<ServerBootstrap, ServerCh
         @Override
         @SuppressWarnings("unchecked")
         public void channelRead(ChannelHandlerContext ctx, Object msg) {
-            final Channel child = (Channel) msg;
+            final Channel child = (Channel) msg; // 即为新连接创建的channel
 
             child.pipeline().addLast(childHandler);
 
